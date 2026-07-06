@@ -1,13 +1,13 @@
 const channelsData = [
   // =====================
-  // CRICKET CHANNELS (Keep as direct links to ensure complex obfuscation works)
+  // CRICKET CHANNELS (Currently Hidden)
   // =====================
-  { name: "Willow TV", desc: "Live Cricket USA", cat: "cricket", icon: "WTV", url: "https://yonotv.pages.dev/wtv", type: "external" },
-  { name: "Sky Sports Cricket", desc: "UK Cricket Broadcasts", cat: "cricket", icon: "SKY", url: "https://wikisport.club/embed/skycric.php", type: "external" },
-  { name: "FanCode", desc: "Live Matches India", cat: "cricket", icon: "FC", url: "https://yonotv.pages.dev/fc2", type: "external" },
-  { name: "Star Sports Hindi", desc: "Hindi Live Broadcast", cat: "cricket", icon: "STAR", url: "https://yonotv-now.pages.dev/plyrr?src=https://newcdn.tamils.click/live/mylive.m3u8", type: "external" },
-  { name: "FanCode English 1", desc: "Live Matches (Server 1)", cat: "cricket", icon: "FCE1", url: "https://yonotv-now.pages.dev/jwplyrr?src=https://np-mc-fblive.fancode.com/mumbai/142294_english_hls_060959847276553_1ta-di_h264/index.m3u8", type: "external" },
-  { name: "FanCode English 2", desc: "Live Matches (Server 2)", cat: "cricket", icon: "FCE2", url: "https://yonotv-now.pages.dev/jwplyrr?src=https://in-mc-fblive.fancode.com/mumbai/142294_english_hls_060959847276553_1ta-di_h264/index.m3u8", type: "external" },
+  // { name: "Willow TV", desc: "Live Cricket USA", cat: "cricket", icon: "WTV", url: "https://yonotv.pages.dev/wtv", type: "external" },
+  // { name: "Sky Sports Cricket", desc: "UK Cricket Broadcasts", cat: "cricket", icon: "SKY", url: "https://wikisport.club/embed/skycric.php", type: "external" },
+  // { name: "FanCode", desc: "Live Matches India", cat: "cricket", icon: "FC", url: "https://yonotv.pages.dev/fc2", type: "external" },
+  // { name: "Star Sports Hindi", desc: "Hindi Live Broadcast", cat: "cricket", icon: "STAR", url: "https://yonotv-now.pages.dev/plyrr?src=https://newcdn.tamils.click/live/mylive.m3u8", type: "external" },
+  // { name: "FanCode English 1", desc: "Live Matches (Server 1)", cat: "cricket", icon: "FCE1", url: "https://yonotv-now.pages.dev/jwplyrr?src=https://np-mc-fblive.fancode.com/mumbai/142294_english_hls_060959847276553_1ta-di_h264/index.m3u8", type: "external" },
+  // { name: "FanCode English 2", desc: "Live Matches (Server 2)", cat: "cricket", icon: "FCE2", url: "https://yonotv-now.pages.dev/jwplyrr?src=https://in-mc-fblive.fancode.com/mumbai/142294_english_hls_060959847276553_1ta-di_h264/index.m3u8", type: "external" },
 
   // =====================
   // FOOTBALL CHANNELS (NATIVE KPTV DRM PLAYER)
@@ -24,15 +24,15 @@ const channelsData = [
   { name: "TVE 1", desc: "Spanish Broadcast", cat: "football", icon: "TVE", type: "native", mpd: "https://otte.cache.aiv-cdn.net/iad-nitro/live/clients/dash/enc/c7di7zkdor/out/v1/f7d5b356e048494a8325563e8916d50b/cenc.mpd", kid: "745cd6ec34a58f2f7ac2af35dc3da6d2", key: "ae008f1e47e6567fe4201a6ff8f1ae54" },
 
   // =====================
-  // ALTERNATIVE FOOTBALL SERVERS (Keep as external links)
+  // ALTERNATIVE FOOTBALL SERVERS (Currently Hidden)
   // =====================
-  { name: "beIN Sports 1", desc: "Premium Football, UCL", cat: "football", icon: "beIN", url: "https://a.kora-sia.com/albaplayer/bein-1/", type: "external" },
-  { name: "beIN Sports Max 1", desc: "Extra Coverage", cat: "football", icon: "MAX1", url: "https://new.poiy.online/albaplayer/max1/", type: "external" },
-  { name: "Live123 Server 1", desc: "Football Backup Stream", cat: "football", icon: "L123", url: "https://yonotv-now.pages.dev/plyrr?src=https://hls.live123.fans/live/4459802.m3u8", type: "external" },
-  { name: "InPlyr Stream", desc: "High Definition Backup", cat: "football", icon: "INP", url: "https://yonotv-now.pages.dev/plyrr?src=https://live.inplyr.com/room/327159.m3u8", type: "external" },
-  { name: "Koepgd Stream", desc: "Alternative Live Server", cat: "football", icon: "KOE", url: "https://yonotv-now.pages.dev/cplyrr?src=https://live05.koepgd.app/live/24561735.m3u8", type: "external" },
-  { name: "SportsOnline HD1", desc: "Premium HD Network", cat: "football", icon: "SPO", url: "https://ww2.sporttsonline.click/channels/hd/hd1.php", type: "external" },
-  { name: "ViaTV Premium", desc: "Live Volleyball & Sports", cat: "football", icon: "VIA", url: "https://yonotv-now.pages.dev/jwplyrr?src=https://webott.viatv.com.np/v0t1/Hpremium/playlist.m3u8", type: "external" }
+  // { name: "beIN Sports 1", desc: "Premium Football, UCL", cat: "football", icon: "beIN", url: "https://a.kora-sia.com/albaplayer/bein-1/", type: "external" },
+  // { name: "beIN Sports Max 1", desc: "Extra Coverage", cat: "football", icon: "MAX1", url: "https://new.poiy.online/albaplayer/max1/", type: "external" },
+  // { name: "Live123 Server 1", desc: "Football Backup Stream", cat: "football", icon: "L123", url: "https://yonotv-now.pages.dev/plyrr?src=https://hls.live123.fans/live/4459802.m3u8", type: "external" },
+  // { name: "InPlyr Stream", desc: "High Definition Backup", cat: "football", icon: "INP", url: "https://yonotv-now.pages.dev/plyrr?src=https://live.inplyr.com/room/327159.m3u8", type: "external" },
+  // { name: "Koepgd Stream", desc: "Alternative Live Server", cat: "football", icon: "KOE", url: "https://yonotv-now.pages.dev/cplyrr?src=https://live05.koepgd.app/live/24561735.m3u8", type: "external" },
+  // { name: "SportsOnline HD1", desc: "Premium HD Network", cat: "football", icon: "SPO", url: "https://ww2.sporttsonline.click/channels/hd/hd1.php", type: "external" },
+  // { name: "ViaTV Premium", desc: "Live Volleyball & Sports", cat: "football", icon: "VIA", url: "https://yonotv-now.pages.dev/jwplyrr?src=https://webott.viatv.com.np/v0t1/Hpremium/playlist.m3u8", type: "external" }
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -69,17 +69,23 @@ function renderGrid(data) {
   const fGrid = document.getElementById('footballGrid');
   const cGrid = document.getElementById('cricketGrid');
 
-  fGrid.innerHTML = '';
-  cGrid.innerHTML = '';
+  if (fGrid) fGrid.innerHTML = '';
+  if (cGrid) cGrid.innerHTML = '';
+
+  data.forEach(c => {
+    const card = createCard(c);
+    if (c.cat === 'football' && fGrid) {
+      fGrid.appendChild(card);
+    } else if (c.cat === 'cricket' && cGrid) {
+      cGrid.appendChild(card);
+    }
+  });
 
   const fData = data.filter(c => c.cat === 'football');
   const cData = data.filter(c => c.cat === 'cricket');
 
-  fGrid.parentElement.style.display = fData.length ? 'block' : 'none';
-  cGrid.parentElement.style.display = cData.length ? 'block' : 'none';
-
-  fData.forEach(c => fGrid.appendChild(createCard(c)));
-  cData.forEach(c => cGrid.appendChild(createCard(c)));
+  if (fGrid && fGrid.parentElement) fGrid.parentElement.style.display = fData.length ? 'block' : 'none';
+  if (cGrid && cGrid.parentElement) cGrid.parentElement.style.display = cData.length ? 'block' : 'none';
 }
 
 function createCard(c) {

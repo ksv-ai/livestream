@@ -6,8 +6,8 @@
   --bg: #f8fafc;
   --surface: #ffffff;
   --surface-hover: #f1f5f9;
-  --primary: #f51343;
-  --primary-glow: rgba(245, 19, 67, 0.4);
+  --primary: #00e5ff;
+  --primary-glow: rgba(0, 229, 255, 0.4);
   --text: #0f172a;
   --text-muted: #64748b;
   --border: rgba(0, 0, 0, 0.08);
@@ -19,11 +19,11 @@
 
 [data-theme="dark"] {
   /* DARK MODE */
-  --bg: #09090b;
-  --surface: #121217;
-  --surface-hover: #1c1c24;
-  --primary: #f51343;
-  --primary-glow: rgba(245, 19, 67, 0.5);
+  --bg: #0a0a0f;
+  --surface: #13131a;
+  --surface-hover: #1c1c26;
+  --primary: #00e5ff;
+  --primary-glow: rgba(0, 229, 255, 0.5);
   --text: #ffffff;
   --text-muted: #8a8a9e;
   --border: rgba(255, 255, 255, 0.08);
@@ -36,7 +36,7 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   background-color: var(--bg);
   color: var(--text);
   line-height: 1.5;
@@ -64,11 +64,10 @@ body {
 
 .nav-brand strong { font-weight: 800; color: var(--primary); }
 
-.logo-box {
-  background: linear-gradient(135deg, var(--primary), #ff4b72);
-  color: #fff; font-weight: 900; font-size: 14px;
-  padding: 6px 10px; border-radius: 8px;
-  box-shadow: 0 4px 12px var(--primary-glow);
+.logo-img {
+  width: 32px; height: 32px; border-radius: 6px;
+  box-shadow: 0 0 12px var(--primary-glow);
+  object-fit: contain;
 }
 
 .nav-controls {
@@ -109,64 +108,82 @@ body {
   color: var(--text); width: 100%; font-family: inherit; font-size: 14px;
 }
 
-/* --- Hero Section --- */
-.hero {
+/* --- Compact Header Section --- */
+.hero.compact {
   position: relative;
-  padding: 100px 40px;
-  text-align: center;
+  padding: 40px;
   border-bottom: 1px solid var(--border);
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Animated glowing background */
-.hero::before {
+.hero.compact::before {
   content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-  background: radial-gradient(circle at 50% 30%, rgba(245, 19, 67, 0.15), transparent 50%);
+  background: radial-gradient(circle at 50% 30%, rgba(0, 229, 255, 0.12), transparent 40%);
   z-index: -1; animation: breathe 8s ease-in-out infinite alternate;
 }
 
 @keyframes breathe {
-  0% { transform: scale(0.9); opacity: 0.8; }
-  100% { transform: scale(1.1); opacity: 1; }
+  0% { transform: scale(0.95); opacity: 0.7; }
+  100% { transform: scale(1.05); opacity: 1; }
 }
 
 .hero-content {
   position: relative; z-index: 1;
-  animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  text-align: left;
+  width: 80%;
+  max-width: 1200px;
+}
+
+.hero-text-wrapper {
+  flex: 1;
 }
 
 @keyframes slideUp {
-  0% { opacity: 0; transform: translateY(30px); }
+  0% { opacity: 0; transform: translateY(20px); }
   100% { opacity: 1; transform: translateY(0); }
 }
 
 .live-badge {
   display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(245, 19, 67, 0.1); border: 1px solid rgba(245, 19, 67, 0.2);
-  color: var(--primary); font-size: 12px; font-weight: 700;
-  padding: 6px 16px; border-radius: 20px; margin-bottom: 24px;
-  letter-spacing: 1.5px; text-transform: uppercase;
+  background: rgba(0, 229, 255, 0.1); border: 1px solid rgba(0, 229, 255, 0.2);
+  color: var(--primary); font-size: 11px; font-weight: 700;
+  padding: 4px 12px; border-radius: 20px; margin-bottom: 16px;
+  letter-spacing: 1px; text-transform: uppercase;
 }
 
 .live-dot {
-  width: 8px; height: 8px; background: var(--primary); border-radius: 50%;
+  width: 6px; height: 6px; background: var(--primary); border-radius: 50%;
   animation: blink 1.5s ease-in-out infinite;
-  box-shadow: 0 0 8px var(--primary);
+  box-shadow: 0 0 6px var(--primary);
 }
 
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
 .hero-content h1 {
-  font-size: 56px; font-weight: 800; letter-spacing: -1.5px; margin-bottom: 16px;
+  font-size: 34px; font-weight: 800; letter-spacing: -1px; margin-bottom: 8px;
+}
+
+.hero-fifa-logo {
+  height: 120px; width: auto; margin-bottom: 0;
+  filter: drop-shadow(0 0 16px var(--primary-glow));
+  flex-shrink: 0;
 }
 .hero-content h1 span { color: var(--primary); }
 .hero-content p {
-  color: var(--text-muted); font-size: 18px; max-width: 600px; margin: 0 auto;
+  color: var(--text-muted); font-size: 15px; max-width: 600px; margin: 0 auto;
 }
 
 /* --- Main Directory Grid --- */
 .directory-main {
-  max-width: 1400px; margin: 0 auto; padding: 60px 40px;
+  max-width: 1400px; margin: 0 auto; padding: 40px;
 }
 
 .category-header {
@@ -224,7 +241,8 @@ body {
 .channel-card:hover .ch-icon {
   border-color: var(--primary);
   color: var(--primary);
-  background: rgba(245, 19, 67, 0.05);
+  background: rgba(0, 229, 255, 0.05);
+  box-shadow: inset 0 0 10px rgba(0, 229, 255, 0.2);
 }
 
 .ch-info { flex: 1; }
@@ -235,7 +253,7 @@ body {
 
 .play-btn {
   width: 36px; height: 36px; border-radius: 50%;
-  background: rgba(245, 19, 67, 0.1);
+  background: rgba(0, 229, 255, 0.1);
   display: flex; align-items: center; justify-content: center;
   color: var(--primary); transition: all 0.3s;
 }
@@ -243,6 +261,21 @@ body {
 .channel-card:hover .play-btn {
   background: var(--primary); color: #fff; transform: scale(1.15);
   box-shadow: 0 4px 12px var(--primary-glow);
+}
+
+/* --- Footer --- */
+.site-footer {
+  text-align: center;
+  padding: 40px 20px;
+  border-top: 1px solid var(--border);
+  margin-top: 40px;
+}
+
+.site-footer p {
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
 }
 
 
@@ -271,11 +304,18 @@ body {
     width: 100%; flex: 1;
   }
 
-  .hero { padding: 60px 20px; }
-  .hero-content h1 { font-size: 36px; }
-  .hero-content p { font-size: 16px; }
+  .hero.compact { padding: 30px 20px; }
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+    width: 100%;
+  }
+  .hero-fifa-logo { height: 80px; }
+  .hero-content h1 { font-size: 28px; }
+  .hero-content p { font-size: 14px; }
 
-  .directory-main { padding: 40px 20px; }
+  .directory-main { padding: 30px 20px; }
   
   .channel-card { padding: 16px; }
   .ch-icon { width: 56px; height: 56px; font-size: 16px; }
@@ -284,6 +324,6 @@ body {
 
 /* Extra Small Phones (Max 480px) */
 @media (max-width: 480px) {
-  .hero-content h1 { font-size: 30px; letter-spacing: -0.5px; }
+  .hero-content h1 { font-size: 24px; letter-spacing: -0.5px; }
   .channel-grid { grid-template-columns: 1fr; }
 }

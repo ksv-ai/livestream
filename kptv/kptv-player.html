@@ -1,53 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Native KPTV Player</title>
-  
-  <!-- Shaka Player Dependencies -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.7.1/shaka-player.ui.min.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.7.1/controls.min.css" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
-  
+  <title>KPTV Player</title>
+  <link rel="icon" type="image/png" href="logo.png">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.7.1/shaka-player.ui.min.js"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.7.1/controls.min.css"
+    crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+
   <style>
-    body { margin: 0; padding: 0; background: #000; color: #fff; font-family: 'Outfit', sans-serif; overflow: hidden; display: flex; flex-direction: column; height: 100vh; }
-    
+    body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
     .player-header {
-      background: rgba(17, 17, 17, 0.9); padding: 16px 24px; display: flex; align-items: center; justify-content: space-between;
-      border-bottom: 1px solid #333; z-index: 100; position: absolute; top: 0; left: 0; right: 0; backdrop-filter: blur(8px);
+      background: rgba(17, 17, 17, 0.9);
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #333;
+      z-index: 100;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      backdrop-filter: blur(8px);
     }
-    .back-btn { color: #fff; text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: color 0.2s; }
-    .back-btn:hover { color: #f51343; }
-    .channel-title { font-size: 18px; font-weight: 700; display: flex; align-items: center; gap: 10px; }
-    .live-tag { background: #f51343; color: #fff; font-size: 10px; padding: 2px 6px; border-radius: 4px; font-weight: 800; letter-spacing: 1px; }
-    
+
+    .back-btn {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.2s;
+    }
+
+    .back-btn:hover {
+      color: #00e5ff;
+    }
+
+    .player-logo {
+      height: 24px;
+      width: auto;
+      border-radius: 4px;
+    }
+
+    .channel-title {
+      font-size: 18px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .live-tag {
+      background: #00e5ff;
+      color: #000;
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
     .player-container {
-      flex: 1; position: relative; background: #000; margin-top: 60px;
+      flex: 1;
+      position: relative;
+      background: #000;
+      margin-top: 60px;
     }
+
     [data-shaka-player-container] {
-      position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
-    video { width: 100%; height: 100%; object-fit: contain; }
-    
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
     /* Hide the default Shaka spinner to prevent it from getting stuck on screen */
     .shaka-spinner-container {
-        display: none !important;
+      display: none !important;
     }
 
     /* Hide the giant live stream time numbers */
-    .shaka-current-time, 
+    .shaka-current-time,
     .shaka-time-container {
-        display: none !important;
+      display: none !important;
     }
   </style>
 </head>
+
 <body>
 
   <div class="player-header">
     <a href="index.html" class="back-btn">
-      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
-      Back to Directory
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+        <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
+      </svg>
+      <img src="logo.png" class="player-logo" alt="KP">
     </a>
     <div class="channel-title">
       <span id="cName">Initializing Stream...</span>
@@ -63,7 +137,7 @@
 
   <script src="channels.js"></script>
   <script>
-    (function() {
+    (function () {
       // 1. Extract short ID from URL
       const urlParams = new URLSearchParams(window.location.search);
       const chId = urlParams.get('id');
@@ -78,6 +152,7 @@
       }
 
       document.getElementById('cName').textContent = channel.name;
+      document.title = channel.name + ' - KPTV Player';
 
       const mpdUrl = channel.mpd;
       const kid = channel.kid;
@@ -89,30 +164,62 @@
 
       function initShakaPlayer() {
         shaka.polyfill.installAll();
-        
+
         shaka.Player.probeSupport().then(() => {
           player = new shaka.Player(video);
-          
-          // Inject our extracted DRM keys!
-          const drmConfig = {
-            drm: { clearKeys: { [kid]: key } }
+
+          // Inject our extracted DRM keys and Streaming configurations!
+          const playerConfig = {
+            drm: { clearKeys: { [kid]: key } },
+            streaming: {
+              bufferingGoal: 60, // Buffer 60 seconds to prevent pausing
+              rebufferingGoal: 2, // Only require 2s of buffer before resuming
+              bufferBehind: 30, // Keep 30 seconds behind
+            }
           };
-          player.configure(drmConfig);
-          
+          player.configure(playerConfig);
+
+          // Attempt to start with sound
+          video.muted = false;
+          video.volume = 1.0;
+
           // Load the actual video file natively
           player.load(mpdUrl).then(() => {
             console.log('Stream loaded natively via KPTV Engine');
-            video.play().catch(e => console.log('Autoplay blocked, waiting for user interaction'));
+
+            // Try unmuted autoplay first
+            video.play().catch(e => {
+              console.log('Unmuted autoplay blocked by browser, falling back to muted autoplay');
+              // If browser blocks sound, fallback to muted so it still plays instantly!
+              video.muted = true;
+              video.play().catch(err => console.log('All autoplay blocked'));
+            });
+
+            // Silent global unlock: Unmute automatically on ANY click/touch anywhere on the screen
+            const unlockSound = () => {
+              if (video.muted) {
+                video.muted = false;
+                video.volume = 1.0;
+              }
+              if (video.paused) {
+                video.play().catch(e => console.log('Play blocked'));
+              }
+              document.removeEventListener('click', unlockSound);
+              document.removeEventListener('touchstart', unlockSound);
+            };
+            document.addEventListener('click', unlockSound);
+            document.addEventListener('touchstart', unlockSound);
+
           }).catch(err => {
             console.error('Player load error', err);
           });
-          
+
           // Setup UI
           const container = document.querySelector('[data-shaka-player-container]');
           if (container) {
             ui = new shaka.ui.Overlay(player, container, video);
           }
-          
+
         }).catch(err => {
           console.error('Shaka probe error', err);
         });
@@ -127,4 +234,5 @@
     })();
   </script>
 </body>
+
 </html>
