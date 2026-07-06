@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <title>LiveXTV — FIFA World Cup</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="brand">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+        <span>LiveXTV <em>World Cup</em></span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="active">Live Matches</a>
+        <a href="#">Highlights</a>
+        <a href="#">Schedule</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Layout -->
+  <main class="main-content">
+    <div class="header-banner">
+      <div class="banner-badge">FIFA World Cup 2026</div>
+      <h1>Stream The World Cup <span>Live in HD</span></h1>
+      <p>Watch all matches free without subscription. Live HD sports streams updated automatically.</p>
+    </div>
+
+    <div class="content-header">
+      <h2>Live Matches</h2>
+      <div class="live-indicator"><div class="dot"></div> Live Now</div>
+    </div>
+
+    <!-- Match Grid -->
+    <div id="matchGrid" class="match-grid">
+      <div class="loading-state">Loading live streams...</div>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StreamFix — FIFA World Cup</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="nav">
+      <a href="index.html" class="logo">
+        <svg viewBox="0 0 24 24" fill="var(--accent)" width="28" height="28"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+        <span style="font-size:20px;font-weight:800;letter-spacing:-1px;color:#fff;">StreamFix</span>
+      </a>
+      <div class="nav-links">
+        <button class="nav-link active">FIFA Matches</button>
+      </div>
+      <div class="live-pill">
+        <div class="live-dot"></div> Live Streams
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Banner -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <h1>Watch FIFA World Cup <br><span class="grad">Live in HD</span></h1>
+        <p>StreamFix lets you watch live World Cup matches online free in HD. No subscription needed. Ad-free streams updated automatically.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="main">
+    <div class="section-head">
+      <div class="section-title">
+        <svg viewBox="0 0 24 24" fill="var(--live)" width="18" height="18"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg>
+        Live Matches
+      </div>
+      <div class="section-badge" id="matchCount">0 matches</div>
+    </div>
+
+    <!-- Grid -->
+    <div id="matchGrid" class="match-grid">
+      <div style="color:var(--muted)">Loading streams...</div>
+    </div>
+  </main>
+
+  <!-- Modal Overlay for Streams -->
+  <div class="overlay" id="playerModal">
+    <div class="player-modal">
+      <div class="modal-top">
+        <div class="modal-info">
+          <div class="modal-title-text" id="modalTitle">Match Title</div>
+          <div class="modal-meta">
+            <div class="modal-live-tag"><div class="live-dot"></div> LIVE</div>
+            <span id="modalMeta">Stadium • Time</span>
+          </div>
+        </div>
+        <button class="close-btn" id="closeModal">✕</button>
+      </div>
+      
+      <div class="streams-panel">
+        <div class="streams-label">Select HD Stream</div>
+        <div class="streams-btns" id="modalLinks">
+          <!-- Links injected here -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
