@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KPTV Ultimate Live Channels</title>
+  <link rel="stylesheet" href="channels.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-brand">
+      <div class="logo-box">KP</div>
+      <span>KPTV <strong>LIVE</strong></span>
+    </div>
+    <div class="nav-search">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      <input type="text" id="searchInput" placeholder="Search channels (e.g. beIN, Willow, Fox)...">
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero-content">
+      <div class="live-badge"><div class="live-dot"></div> DIRECT BROADCAST</div>
+      <h1>Stream Global Sports <span>Without Limits</span></h1>
+      <p>Select any premium channel below to watch live Football, Cricket, and more in stunning HD. No ads, no popups.</p>
+    </div>
+    <div class="hero-overlay"></div>
+  </header>
+
+  <!-- Channels Directory -->
+  <main class="directory-main">
+    
+    <!-- Football Category -->
+    <section class="category-section">
+      <div class="category-header">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 110-16 8 8 0 010 16zm-1-13h2v4h-2zm0 6h2v2h-2z"/></svg>
+        <h2>Football Networks</h2>
+      </div>
+      <div class="channel-grid" id="footballGrid">
+        <!-- Injected via JS -->
+      </div>
+    </section>
+
+    <!-- Cricket Category -->
+    <section class="category-section">
+      <div class="category-header" style="margin-top: 40px;">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+        <h2>Cricket Networks</h2>
+      </div>
+      <div class="channel-grid" id="cricketGrid">
+        <!-- Injected via JS -->
+      </div>
+    </section>
+
+  </main>
+
+  <script src="channels.js"></script>
+</body>
+</html>
