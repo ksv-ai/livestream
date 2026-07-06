@@ -1,0 +1,55 @@
+{
+    "match": {
+        "title": "FIFA World Cup",
+        "date": "22 Jun 2026",
+        "time": "12:45 AM NST",
+        "stadium": "Camp Nou Stadium",
+        "league": "FIFA World Cup",
+        "round": "Group Stage",
+        "broadcaster": "beIN Sports,Sky Go UK,NBC",
+        "banner_image": "https://ichef.bbci.co.uk/images/ic/raw/p0nr8w9y.jpg",
+        "lineup_published": false
+    },
+    "team1": {
+        "name": "FIFA",
+        "lineup": "XX"
+    },
+    "team2": {
+        "name": "Ghana",
+        "lineup": "XX"
+    },
+    "telecast_links": [
+        {
+            "name": "ALL Link 2:FIFA World Cup",
+            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=FIFA"
+        },
+        {
+            "name": "HD Link 2:FIFA World Cup",
+            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=FIFA2"
+        },
+        {
+            "name": "HD Link 3:FIFA World Cup",
+            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=FIFA3"
+        },
+        {
+            "name": "HD Link 4:FIFA World Cup",
+            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=FIFA4"
+        },
+        {
+            "name": "IOS Link 6:FIFA World Cup",
+            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=FIFA5"
+        },
+        {
+            "name": "PC Link 7:FIFA World Cup",
+            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=FIFA6"
+        },
+        {
+            "name": "PC Link 8:FIFA World Cup",
+            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=FIFA7"
+        },
+        {
+            "name": "PC Link 9:FIFA World Cup",
+            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=FIFA8"
+        }
+    ]
+}

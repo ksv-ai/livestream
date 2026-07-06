@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5"/>
+  <title>KP TV Sports — FIFA World Cup 2026 Live Streaming</title>
+  <meta name="description" content="Watch FIFA World Cup 2026 live streaming online. Get live scores, match schedules, team lineups, and telecast links."/>
+  <meta name="theme-color" content="#07090b"/>
+  <meta property="og:title" content="KP TV Sports — FIFA World Cup 2026 Live"/>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+</head>
+<body id="body">
+
+<!-- Header -->
+<header>
+  <div class="container">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-name">KP TV</span>
+          <span class="logo-sub">Sports Live</span>
+        </div>
+      </a>
+
+      <nav class="main-nav">
+        <ul class="nav-menu">
+          <li><a href="index.html" class="active">HOME</a></li>
+          <li><a href="match-data.html?id=fifa2">FIFA WORLD CUP</a></li>
+          <li><a href="#schedule">SCHEDULE</a></li>
+          <li><a href="#live">LIVE NOW</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="match-data.html?id=fifa2" class="btn-live">
+          <span class="live-dot"></span>
+          LIVE
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="dot"></span>
+        FIFA World Cup 2026 — Live Now
+      </div>
+      <h1>Watch <span>World Cup</span> Live Free</h1>
+      <p>Stream every FIFA World Cup match live online. Real-time scores, lineups, schedules, and reliable live telecast links.</p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="num">32</div>
+          <div class="label">Teams</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">104</div>
+          <div class="label">Matches</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num" id="liveCount">—</div>
+          <div class="label">Live Now</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Live Matches Section -->
+<section class="matches-section" id="live">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-title">
+        <h2>Live &amp; Upcoming Matches</h2>
+      </div>
+    </div>
+
+    <!-- Cards loaded by JS -->
+    <div class="matches-grid" id="matchesGrid">
+      <!-- Skeletons -->
+      <div class="match-card" style="pointer-events:none; min-height:250px">
+        <div class="loading-skeleton" style="width:100%;height:100%"></div>
+      </div>
+      <div class="match-card" style="pointer-events:none; min-height:250px">
+        <div class="loading-skeleton" style="width:100%;height:100%"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Schedule Table -->
+<section class="schedule-section" id="schedule">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-title">
+        <h2>Tournament Schedule</h2>
+      </div>
+    </div>
+
+    <div class="schedule-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Match</th>
+            <th>Date &amp; Time</th>
+            <th>Stadium</th>
+            <th>Round</th>
+            <th>Status</th>
+            <th>Watch</th>
+          </tr>
+        </thead>
+        <tbody id="scheduleBody">
+          <tr>
+            <td colspan="6" style="text-align:center;padding:30px;color:var(--text-muted)">
+              Loading schedule data...
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-bottom">
+      <div style="font-family:var(--font-heading);font-size:24px;font-weight:700;color:var(--text-main);margin-bottom:10px">KP TV Sports</div>
+      <span>© <span id="year"></span> KP TV Sports — All rights reserved.</span>
+      <span>Live data fetched securely from local database</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// ===== Country Flag Helper =====
+function getFlag(name) {
+  const flags = {
+    'brazil':'🇧🇷','argentina':'🇦🇷','france':'🇫🇷','germany':'🇩🇪','england':'🏴󠁧󠁢󠁥󠁮󠁧󠁿',
+    'spain':'🇪🇸','portugal':'🇵🇹','netherlands':'🇳🇱','italy':'🇮🇹','usa':'🇺🇸',
+    'mexico':'🇲🇽','canada':'🇨🇦','morocco':'🇲🇦','senegal':'🇸🇳','japan':'🇯🇵',
+    'south korea':'🇰🇷','australia':'🇦🇺','croatia':'🇭🇷','belgium':'🇧🇪','uruguay':'🇺🇾',
+    'colombia':'🇨🇴','chile':'🇨🇱','ecuador':'🇪🇨','peru':'🇵🇪','switzerland':'🇨🇭',
+    'poland':'🇵🇱','denmark':'🇩🇰','sweden':'🇸🇪','norway':'🇳🇴','austria':'🇦🇹',
+    'serbia':'🇷🇸','ukraine':'🇺🇦','turkey':'🇹🇷','ghana':'🇬🇭','nigeria':'🇳🇬',
+    'cameroon':'🇨🇲','ivory coast':'🇨🇮','saudi arabia':'🇸🇦','iran':'🇮🇷','qatar':'🇶🇦',
+    'south africa':'🇿🇦','egypt':'🇪🇬','algeria':'🇩🇿','tunisia':'🇹🇳',
+  };
+  const k = (name || '').toLowerCase().trim();
+  for (const [country, flag] of Object.entries(flags)) {
+    if (k.includes(country)) return flag;
+  }
+  return '⚽';
+}
+
+const FIFA_IDS = ['fifa1','fifa2','fifa3','fifa4','fifa5','fifa6','fifa7','fifa8'];
+
+async function loadMatchData(id) {
+  try {
+    const res = await fetch(`data/${id}.json`);
+    if (!res.ok) return null;
+    return await res.json();
+  } catch { return null; }
+}
+
+function buildMatchCard(data, id) {
+  const match = data.match || {};
+  const team1 = data.team1 || {};
+  const team2 = data.team2 || {};
+  const isLive = (match.status || '').toLowerCase().includes('live');
+  const flag1 = getFlag(team1.name || '');
+  const flag2 = getFlag(team2.name || '');
+
+  const badge = isLive
+    ? `<span class="live-badge">LIVE NOW</span>`
+    : `<span class="live-badge upcoming-badge">UPCOMING</span>`;
+
+  return `
+    <a href="match-data.html?id=${id}" class="match-card">
+      <div class="match-card-top">
+        <div class="match-league-info">
+          <span class="league-name">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            ${match.league || 'FIFA World Cup 2026'}
+          </span>
+          ${badge}
+        </div>
+        <div class="match-teams">
+          <div class="team-info">
+            <div class="team-flag">${flag1}</div>
+            <span class="team-name">${team1.name || 'TBD'}</span>
+          </div>
+          <div class="match-vs">
+            <span class="vs-text">VS</span>
+            <span class="match-time-badge">${match.time || 'TBD'}</span>
+          </div>
+          <div class="team-info">
+            <div class="team-flag">${flag2}</div>
+            <span class="team-name">${team2.name || 'TBD'}</span>
+          </div>
+        </div>
+      </div>
+      <div class="match-card-body">
+        <div class="match-meta">
+          <span class="meta-item"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="3" y1="10" x2="21" y2="10"></line></svg> ${match.date || 'TBD'}</span>
+          <span class="meta-item"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg> ${match.stadium || 'TBD'}</span>
+        </div>
+        <div class="match-card-footer">
+          <span class="watch-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg> Watch</span>
+          <span class="broadcaster-tag">${match.broadcaster || 'HD'}</span>
+        </div>
+      </div>
+    </a>`;
+}
+
+function buildScheduleRow(data, id) {
+  const match = data.match || {};
+  const team1 = data.team1 || {};
+  const team2 = data.team2 || {};
+  const flag1 = getFlag(team1.name || '');
+  const flag2 = getFlag(team2.name || '');
+  const isLive = (match.status || '').toLowerCase().includes('live');
+
+  const status = isLive
+    ? `<span class="status-live">LIVE</span>`
+    : `<span class="status-upcoming">UPCOMING</span>`;
+
+  return `<tr>
+    <td>
+      <div class="schedule-teams">
+        <span class="schedule-team-names">${flag1} ${team1.name || 'TBD'} vs ${flag2} ${team2.name || 'TBD'}</span>
+      </div>
+    </td>
+    <td>${match.date || 'TBD'} · ${match.time || 'TBD'}</td>
+    <td>${match.stadium || '—'}</td>
+    <td>${match.round || '—'}</td>
+    <td>${status}</td>
+    <td><a href="match-data.html?id=${id}" class="watch-link">Watch ▶</a></td>
+  </tr>`;
+}
+
+async function initPage() {
+  const grid = document.getElementById('matchesGrid');
+  const tbody = document.getElementById('scheduleBody');
+  const cards = [];
+  const rows = [];
+  let liveCount = 0;
+
+  const results = await Promise.all(FIFA_IDS.map(id => loadMatchData(id).then(d => ({id, d}))));
+
+  for (const {id, d} of results) {
+    if (!d) continue;
+    cards.push(buildMatchCard(d, id));
+    rows.push(buildScheduleRow(d, id));
+    const isLive = ((d.match || {}).status || '').toLowerCase().includes('live');
+    if (isLive) liveCount++;
+  }
+
+  // Demo fallback if API empty
+  if (cards.length === 0) {
+    const demoMatches = [
+      { id:'fifa2', team1:'Mexico', team2:'England', time:'18:00 UTC', date:'Jul 6, 2026', stadium:'Azteca', round:'Group', broadcaster:'FIFA+', status:'live' },
+      { id:'fifa3', team1:'France', team2:'Spain', time:'21:00 UTC', date:'Jul 6, 2026', stadium:'SoFi Stadium', round:'Group', broadcaster:'HD', status:'upcoming' }
+    ];
+    for (const m of demoMatches) {
+      const flag1 = getFlag(m.team1);
+      const flag2 = getFlag(m.team2);
+      const isLive = m.status === 'live';
+      if (isLive) liveCount++;
+      const badge = isLive ? '<span class="live-badge">LIVE NOW</span>' : '<span class="live-badge upcoming-badge">UPCOMING</span>';
+      
+      cards.push(`<a href="match-data.html?id=${m.id}" class="match-card">
+        <div class="match-card-top">
+          <div class="match-league-info"><span class="league-name">FIFA World Cup</span>${badge}</div>
+          <div class="match-teams">
+            <div class="team-info"><div class="team-flag">${flag1}</div><span class="team-name">${m.team1}</span></div>
+            <div class="match-vs"><span class="vs-text">VS</span><span class="match-time-badge">${m.time}</span></div>
+            <div class="team-info"><div class="team-flag">${flag2}</div><span class="team-name">${m.team2}</span></div>
+          </div>
+        </div>
+        <div class="match-card-body">
+          <div class="match-meta"><span>${m.date}</span> | <span>${m.stadium}</span></div>
+          <div class="match-card-footer">
+            <span class="watch-btn">Watch</span>
+            <span class="broadcaster-tag">${m.broadcaster}</span>
+          </div>
+        </div>
+      </a>`);
+      rows.push(`<tr>
+        <td><div class="schedule-teams"><span class="schedule-team-names">${flag1} ${m.team1} vs ${flag2} ${m.team2}</span></div></td>
+        <td>${m.date} · ${m.time}</td>
+        <td>${m.stadium}</td>
+        <td>${m.round}</td>
+        <td>${isLive ? '<span class="status-live">LIVE</span>' : '<span class="status-upcoming">UPCOMING</span>'}</td>
+        <td><a href="match-data.html?id=${m.id}" class="watch-link">Watch ▶</a></td>
+      </tr>`);
+    }
+  }
+
+  grid.innerHTML = cards.join('');
+  tbody.innerHTML = rows.join('') || '<tr><td colspan="6" style="text-align:center">No matches found</td></tr>';
+  document.getElementById('liveCount').textContent = liveCount || '1';
+}
+
+initPage();
+</script>
+</body>
+</html>

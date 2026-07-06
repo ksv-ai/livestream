@@ -1,0 +1,67 @@
+{
+    "match": {
+        "title": "Colombia vs Ghana",
+        "date": "04 July 2026",
+        "time": "07:15 AM NST",
+        "stadium": "NRG Stadium",
+        "league": "FIFA World Cup",
+        "round": "Round of 32",
+        "broadcaster": "beIN Sports,Sky Go UK,NBC",
+        "banner_image": "https://theanalyst.com/wp-content/uploads/2026/07/colombia-vs-ghana-match-preview-opta.jpg",
+        "lineup_published": true
+    },
+    "team1": {
+        "name": "Colombia",
+        "lineup": "Simon; Llorente, Laporte, Cubarsi, Cucurella; Rodri, Ruiz, Gavi, Pedri; Torres, Oyarzabal"
+    },
+    "team2": {
+        "name": "Ghana",
+        "lineup": "Vozinha; Borges, Lopes, Cabral, Moreira; Pina, Monteiro, Duarte; Cabral, Livramento, Mendes"
+    },
+    "telecast_links": [
+        {
+            "name": "ALL Link 2:Colombia vs Ghana",
+            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=Colombia"
+        },
+        {
+            "name": "HD Link 1:Colombia vs Ghana",
+            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=Colombia2"
+        },
+        {
+            "name": "HD Link 3:Colombia vs Ghana",
+            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=Colombia3"
+        },
+        {
+            "name": "HD Link 4:Colombia vs Ghana",
+            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=Colombia4"
+        },
+        {
+            "name": "Full HD 6:Colombia vs Ghana",
+            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=Colombia5"
+        },
+        {
+            "name": "Link 8:Colombia vs Ghana",
+            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=Colombia6"
+        },
+        {
+            "name": "Link 9:Colombia vs Ghana",
+            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=Colombia7"
+        },
+        {
+            "name": "Link 10:Colombia vs Ghana",
+            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=Colombia8"
+        },
+        {
+            "name": "Link 12:Colombia vs Ghana",
+            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=Colombia9"
+        },
+        {
+            "name": "Link 13:Colombia vs Ghana",
+            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=Colombia10"
+        },
+        {
+            "name": "Link 14:Colombia vs Ghana",
+            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=Colombia11"
+        }
+    ]
+}

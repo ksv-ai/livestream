@@ -1,0 +1,67 @@
+{
+    "match": {
+        "title": "Mexico vs England",
+        "date": "07 July 2026",
+        "time": "02:45 AM NST",
+        "stadium": "NRG Stadium",
+        "league": "FIFA World Cup",
+        "round": "Round of 32",
+        "broadcaster": "beIN Sports,Sky Go UK,NBC",
+        "banner_image": "https://theanalyst.com/wp-content/uploads/2026/07/England-v-Mexico-preview.jpg",
+        "lineup_published": true
+    },
+    "team1": {
+        "name": "Mexico",
+        "lineup": "Simon; Llorente, Laporte, Cubarsi, Cucurella; Rodri, Ruiz, Gavi, Pedri; Torres, Oyarzabal"
+    },
+    "team2": {
+        "name": "England",
+        "lineup": "Vozinha; Borges, Lopes, Cabral, Moreira; Pina, Monteiro, Duarte; Cabral, Livramento, Mendes"
+    },
+    "telecast_links": [
+        {
+            "name": "ALL Link 2:Mexico vs England",
+            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=Mexico"
+        },
+        {
+            "name": "HD Link 2:Mexico vs England",
+            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=Mexico2"
+        },
+        {
+            "name": "HD Link 3:Mexico vs England",
+            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=Mexico3"
+        },
+        {
+            "name": "HD Link 4:Mexico vs England",
+            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=Mexico4"
+        },
+        {
+            "name": "HD 6:Mexico vs England",
+            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=Mexico5"
+        },
+        {
+            "name": "Link 8:Mexico vs England",
+            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=Mexico6"
+        },
+        {
+            "name": "Link 9:Mexico vs England",
+            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=Mexico7"
+        },
+        {
+            "name": "Link 10:Mexico vs England",
+            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=Mexico8"
+        },
+        {
+            "name": "Link 12:Mexico vs England",
+            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=Mexico9"
+        },
+        {
+            "name": "Link 13:Mexico vs England",
+            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=Mexico10"
+        },
+        {
+            "name": "Link 14:Mexico vs England",
+            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=Mexico11"
+        }
+    ]
+}
