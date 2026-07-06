@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KPTV Multiview</title>
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="stylesheet" href="channels.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Shaka Player Dependencies -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.7.1/shaka-player.ui.min.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.7.1/controls.min.css" crossorigin="anonymous">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar" style="border-bottom: 1px solid #333; background: #111;">
+    <div class="nav-brand">
+      <img src="logo.png" class="logo-img" alt="KP Logo">
+      <span>KPTV <strong>MULTIVIEW</strong></span>
+    </div>
+    <div class="nav-controls">
+      <a href="index.html" class="nav-multistream-btn" style="background: rgba(255, 255, 255, 0.1); color: #fff; border-color: transparent;">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Exit Multiview
+      </a>
+    </div>
+  </nav>
+
+  <!-- Multi Grid -->
+  <div class="multi-grid-container">
+    <!-- Slot 0 -->
+    <div class="multi-slot">
+      <div class="slot-header">
+        <select class="slot-selector" data-slot="0">
+          <option value="">Select Channel...</option>
+        </select>
+        <span class="live-tag" style="display:none;" id="badge-0">LIVE</span>
+      </div>
+      <div class="slot-video-container" id="container-0">
+        <video id="video-0" controls></video>
+      </div>
+      <div class="slot-empty-state" id="empty-0">Select a channel to start streaming</div>
+    </div>
+
+    <!-- Slot 1 -->
+    <div class="multi-slot">
+      <div class="slot-header">
+        <select class="slot-selector" data-slot="1">
+          <option value="">Select Channel...</option>
+        </select>
+        <span class="live-tag" style="display:none;" id="badge-1">LIVE</span>
+      </div>
+      <div class="slot-video-container" id="container-1">
+        <video id="video-1" controls></video>
+      </div>
+      <div class="slot-empty-state" id="empty-1">Select a channel to start streaming</div>
+    </div>
+  </div>
+
+  <script src="channels.js"></script>
+  <script>
+    // Polyfill installation must happen before initialization
+    document.addEventListener('DOMContentLoaded', () => {
+      shaka.polyfill.installAll();
+      if (!shaka.Player.isBrowserSupported()) {
+        alert("Browser not supported for streaming.");
+        return;
+      }
+      populateSelects();
+    });
+
+    let players = [null, null];
+    let uis = [null, null];
+    
+    function populateSelects() {
+      // Filter out only native DRM channels
+      const nativeChannels = channelsData.filter(c => c.type === 'native');
+      const selects = document.querySelectorAll('.slot-selector');
+      
+      selects.forEach(select => {
+        nativeChannels.forEach(c => {
+          const option = document.createElement('option');
+          option.value = c.name;
+          option.textContent = c.name;
+          select.appendChild(option);
+        });
+        
+        select.addEventListener('change', (e) => {
+          const slotId = parseInt(e.target.dataset.slot);
+          const chName = e.target.value;
+          
+          if (chName) {
+            const channel = nativeChannels.find(c => c.name === chName);
+            playChannelInSlot(slotId, channel);
+          } else {
+            stopChannelInSlot(slotId);
+          }
+        });
+      });
+    }
+
+    async function playChannelInSlot(slotId, channel) {
+      const video = document.getElementById(`video-${slotId}`);
+      const emptyState = document.getElementById(`empty-${slotId}`);
+      const badge = document.getElementById(`badge-${slotId}`);
+      const container = document.getElementById(`container-${slotId}`);
+      
+      emptyState.style.display = 'none';
+      badge.style.display = 'inline-block';
+      
+      // Destroy existing player/UI in this slot if any
+      if (uis[slotId]) {
+        await uis[slotId].destroy();
+        uis[slotId] = null;
+      }
+      if (players[slotId]) {
+        await players[slotId].destroy();
+        players[slotId] = null;
+      }
+      
+      // --- APPLE SMART-FALLBACK SYSTEM ---
+      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+      if (isIOS && channel.fallbackUrl) {
+        if (channel.fallbackUrl.endsWith('.m3u8')) {
+          video.src = channel.fallbackUrl;
+          video.controls = true;
+          video.muted = true; // keep muted in multiview
+          video.load();
+          video.play().catch(e => console.log('Autoplay blocked'));
+        } else {
+          container.innerHTML = `<iframe src="${channel.fallbackUrl}" width="100%" height="100%" frameborder="0" allowfullscreen style="border:none;"></iframe>`;
+        }
+        return; // Abort native Shaka init
+      }
+      // -----------------------------------
+      
+      // Initialize new player
+      const player = new shaka.Player(video);
+      players[slotId] = player;
+      
+      const playerConfig = {
+        drm: { clearKeys: { [channel.kid]: channel.key } },
+        streaming: { bufferingGoal: 30 }
+      };
+      player.configure(playerConfig);
+      
+      // Force mute initially to prevent audio chaos when multiple streams load
+      video.muted = true;
+      video.volume = 1.0;
+      
+      try {
+        await player.load(channel.mpd);
+        
+        // Setup UI overlay for this specific player
+        uis[slotId] = new shaka.ui.Overlay(player, container, video);
+        
+        video.play().catch(e => console.log('Autoplay blocked', e));
+      } catch (err) {
+        console.error('Error loading channel in slot', slotId, err);
+        emptyState.innerHTML = "Error loading stream. Please refresh.";
+        emptyState.style.display = 'flex';
+        badge.style.display = 'none';
+      }
+    }
+
+    async function stopChannelInSlot(slotId) {
+      const video = document.getElementById(`video-${slotId}`);
+      
+      if (uis[slotId]) {
+        await uis[slotId].destroy();
+        uis[slotId] = null;
+      }
+      if (players[slotId]) {
+        await players[slotId].destroy();
+        players[slotId] = null;
+      }
+      
+      video.src = "";
+      document.getElementById(`empty-${slotId}`).style.display = 'flex';
+      document.getElementById(`empty-${slotId}`).innerText = 'Select a channel to start streaming';
+      document.getElementById(`badge-${slotId}`).style.display = 'none';
+    }
+  </script>
+</body>
+</html>
