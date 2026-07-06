@@ -140,7 +140,6 @@
   </div>
 </footer>
 
-<script src="data.js"></script>
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -167,7 +166,11 @@ function getFlag(name) {
 const FIFA_IDS = ['fifa1','fifa2','fifa3','fifa4','fifa5','fifa6','fifa7','fifa8'];
 
 async function loadMatchData(id) {
-  return window.KP_DATA ? window.KP_DATA[id] : null;
+  try {
+    const res = await fetch(`https://yonotv-data.pages.dev/${id}.json?t=${Date.now()}`);
+    if (!res.ok) return null;
+    return await res.json();
+  } catch { return null; }
 }
 
 function buildMatchCard(data, id) {

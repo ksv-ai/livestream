@@ -99,7 +99,6 @@
         <!-- Tabs -->
         <div class="tabs-bar">
           <button class="tab-btn active" onclick="switchTab('info',this)">Match Info</button>
-          <button class="tab-btn" onclick="switchTab('lineup',this)">Lineup</button>
           <button class="tab-btn" onclick="switchTab('stream',this)">Live Stream</button>
         </div>
 
@@ -165,24 +164,7 @@
           </div>
         </div>
 
-        <!-- TAB: Lineup -->
-        <div class="tab-content" id="tab-lineup">
-          <div class="info-card">
-            <div class="info-card-header">
-              <h3>Starting XI</h3>
-            </div>
-            <div id="lineup-content" class="lineup-grid">
-              <div class="lineup-team">
-                <div class="lineup-team-name"><div class="loading-skeleton" style="width:80px;height:24px;margin:0 auto"></div></div>
-                <div class="lineup-players"><div class="loading-skeleton" style="width:120px;height:100px;margin:0 auto"></div></div>
-              </div>
-              <div class="lineup-team">
-                <div class="lineup-team-name"><div class="loading-skeleton" style="width:80px;height:24px;margin:0 auto"></div></div>
-                <div class="lineup-players"><div class="loading-skeleton" style="width:120px;height:100px;margin:0 auto"></div></div>
-              </div>
-            </div>
-          </div>
-        </div>
+
 
         <!-- TAB: Live Stream -->
         <div class="tab-content" id="tab-stream">
@@ -229,7 +211,6 @@
   </div>
 </footer>
 
-<script src="data.js"></script>
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -334,9 +315,14 @@ function updatePage(data) {
     lineupEl.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-muted)">Lineups will be available closer to kick-off.</div>`;
   }
 
+  // Filter ad links on the fly
+  const cleanLinks = (data.telecast_links || []).filter(link => {
+    return link.url && !link.url.endsWith('/ADS') && !link.url.includes('ADS');
+  });
+
   const telecastEl = document.getElementById('telecast-links');
-  if (telecastLinks.length > 0) {
-    telecastEl.innerHTML = telecastLinks.map((link, i) => `
+  if (cleanLinks.length > 0) {
+    telecastEl.innerHTML = cleanLinks.map((link, i) => `
       <a href="${link.url}" target="_blank" rel="noopener noreferrer" class="telecast-link">
         <div class="telecast-link-icon">
           <div class="play-icon"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
@@ -351,8 +337,9 @@ function updatePage(data) {
 
 async function loadMatchData(silent = false) {
   try {
-    const data = window.KP_DATA ? window.KP_DATA[matchId] : null;
-    if (!data) throw new Error('Data not found for ' + matchId);
+    const res = await fetch(`https://yonotv-data.pages.dev/${matchId}.json?t=${Date.now()}`);
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
     updatePage(data);
     if (!silent) loadOtherMatches();
   } catch (err) {
@@ -367,10 +354,13 @@ const OTHER_IDS = ['fifa1','fifa2','fifa3','fifa4','fifa5','fifa6','fifa7','fifa
 async function loadOtherMatches() {
   const sidebarEl = document.getElementById('sidebarMatches');
   const items = [];
-  
-  for (const id of OTHER_IDS.slice(0, 5)) {
-    const d = window.KP_DATA ? window.KP_DATA[id] : null;
-    if (!d) continue;
+  const results = await Promise.allSettled(
+    OTHER_IDS.slice(0,5).map(id => fetch(`https://yonotv-data.pages.dev/${id}.json`).then(r => r.json()).then(d => ({id, d})))
+  );
+
+  for (const r of results) {
+    if (r.status !== 'fulfilled' || !r.value.d) continue;
+    const {id, d} = r.value;
     const team1 = (d.team1 || {}).name || 'TBD';
     const team2 = (d.team2 || {}).name || 'TBD';
     const flag1 = getFlag(team1);
