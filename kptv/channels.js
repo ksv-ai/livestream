@@ -36,13 +36,33 @@ const channelsData = [
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
+  // --- Theme Toggle Logic ---
+  const themeToggle = document.getElementById('themeToggle');
+  
+  // Check local storage for saved theme, default to dark if nothing saved
+  const currentTheme = localStorage.getItem('theme') || 'dark';
+  document.documentElement.setAttribute('data-theme', currentTheme);
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+  }
+
+  // --- Grid Rendering Logic ---
   renderGrid(channelsData);
 
-  document.getElementById('searchInput').addEventListener('input', (e) => {
-    const q = e.target.value.toLowerCase();
-    const filtered = channelsData.filter(c => c.name.toLowerCase().includes(q) || c.desc.toLowerCase().includes(q));
-    renderGrid(filtered);
-  });
+  const searchInput = document.getElementById('searchInput');
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      const q = e.target.value.toLowerCase();
+      const filtered = channelsData.filter(c => c.name.toLowerCase().includes(q) || c.desc.toLowerCase().includes(q));
+      renderGrid(filtered);
+    });
+  }
 });
 
 function renderGrid(data) {
