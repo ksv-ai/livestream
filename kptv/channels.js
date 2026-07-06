@@ -16,12 +16,12 @@ const channelsData = [
   { name: "TSN 1", desc: "Live Matches", cat: "football", icon: "TSN1", type: "native", mpd: "https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/w0rehjjrwe/out/v1/69a2a7041395406b970598f61680e7cf/cenc.mpd", kid: "14eeabf30c14b7fbf3008c03099ce011", key: "17d2ac8dbc5429bd70af3433aa12158d" },
   { name: "TSN 4", desc: "Live Matches", cat: "football", icon: "TSN4", type: "native", mpd: "https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/ihys8nw4wv/out/v1/fde190f369484bc6b6117cc16cd82a9f/cenc.mpd", kid: "abc5b2883121012850ebda05b528c5ec", key: "e5250924f4b738905f7163a0134587a7" },
   { name: "ITV 1", desc: "UK Free-to-Air", cat: "football", icon: "ITV", type: "native", mpd: "https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/0eiyyz8qzm/out/v1/dd17af8835fe4bd087d1a4e359b635d7/cenc.mpd", kid: "30089c52924f037b225b82c616fee2a5", key: "f55dc8b66ed4fc6753d6035ae7e17144" },
+  { name: "FIFA TV", desc: "Official FIFA Stream", cat: "football", icon: "FIFA", type: "native", mpd: "https://qp-pldt-live-bpk-ucd-prod.akamaized.net/bpk-tv/fifa_ppv1/default/index.mpd", kid: "2c338a117d434ce4bbe3569231af90f1", key: "a9633d901ee8a3f4f58ac314b5c5f4fb" },
+  { name: "FIFA Live", desc: "FIFA Match Server", cat: "football", icon: "FIFA2", type: "native", mpd: "https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/72sjo8hygl/out/v1/3079be34d72a4985852d299a02406a0c/cenc.mpd", kid: "d185684e2330de5bea436daa094a5e86", key: "014f0116154f5bf0050e03a6b0a23157" },
   { name: "DSports", desc: "Latin America Football", cat: "football", icon: "DSP", type: "native", mpd: "https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/x0srg3jjpz/out/v1/f779c49314394d61886d63f58d9d52e4/cenc.mpd", kid: "4f4c3a9912ea752e88f4497864a1bc8b", key: "278128004fe8c6ffb2cd2a0c154a241a" },
   { name: "M6", desc: "French Broadcasts", cat: "football", icon: "M6", type: "native", mpd: "https://edge-fastly-m6web.live.6cloud.fr/out/v1/6play/6play-m6/cmaf_cenc00/dash-short-hd.mpd", kid: "0182ed7af02734ecb17a2f55eec98f99", key: "60346785b1095596de621031e9daf3ec" },
   { name: "SporTV", desc: "Brazilian Sports Network", cat: "football", icon: "SPTV", type: "native", mpd: "https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/w8kwdfmlgs/out/v1/3aa321e477504937a439b602e078eb18/cenc.mpd", kid: "51c0ef23b17297e5c01cd7f36dd0a6ce", key: "8823f713ba6fdb9bbe0a2ad82d309a4b" },
   { name: "TVE 1", desc: "Spanish Broadcast", cat: "football", icon: "TVE", type: "native", mpd: "https://otte.cache.aiv-cdn.net/iad-nitro/live/clients/dash/enc/c7di7zkdor/out/v1/f7d5b356e048494a8325563e8916d50b/cenc.mpd", kid: "745cd6ec34a58f2f7ac2af35dc3da6d2", key: "ae008f1e47e6567fe4201a6ff8f1ae54" },
-  { name: "FIFA TV", desc: "Official FIFA Stream", cat: "football", icon: "FIFA", type: "native", mpd: "https://qp-pldt-live-bpk-ucd-prod.akamaized.net/bpk-tv/fifa_ppv1/default/index.mpd", kid: "2c338a117d434ce4bbe3569231af90f1", key: "a9633d901ee8a3f4f58ac314b5c5f4fb" },
-  { name: "FIFA Live", desc: "FIFA Match Server", cat: "football", icon: "FIFA2", type: "native", mpd: "https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/72sjo8hygl/out/v1/3079be34d72a4985852d299a02406a0c/cenc.mpd", kid: "d185684e2330de5bea436daa094a5e86", key: "014f0116154f5bf0050e03a6b0a23157" },
 
   // =====================
   // ALTERNATIVE FOOTBALL SERVERS (Keep as external links)
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function renderGrid(data) {
   const fGrid = document.getElementById('footballGrid');
   const cGrid = document.getElementById('cricketGrid');
-  
+
   fGrid.innerHTML = '';
   cGrid.innerHTML = '';
 
@@ -65,18 +65,18 @@ function renderGrid(data) {
 function createCard(c) {
   const a = document.createElement('a');
   a.className = 'channel-card';
-  
+
   if (c.type === 'native') {
     // Pass the actual decrypted keys to our local player
     a.href = `kptv-player.html?name=${encodeURIComponent(c.name)}&mpd=${btoa(c.mpd)}&kid=${btoa(c.kid)}&key=${btoa(c.key)}`;
-    a.target = '_self'; 
+    a.target = '_self';
   } else {
     // Keep external links opening in a new tab to avoid frame-busting
     a.href = c.url;
     a.target = '_blank';
     a.rel = 'noopener noreferrer';
   }
-  
+
   a.innerHTML = `
     <div class="ch-icon">${c.icon}</div>
     <div class="ch-info">
