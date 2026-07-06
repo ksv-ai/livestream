@@ -12,9 +12,9 @@ const channelsData = [
   // =====================
   // FOOTBALL CHANNELS (NATIVE KPTV DRM PLAYER)
   // =====================
-  { name: "Fox Sports 1", desc: "US Sports & Soccer", cat: "football", icon: "FOX1", type: "native", mpd: "https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/enc/ajfoeddkbz/out/v1/b78800b9b2304879b15843f455836829/cenc.mpd", kid: "f6564ec2aee819046328a0e153be574d", key: "ff46a8a1031eb27ef22576a077c98ab7" },
   { name: "TSN 1", desc: "Live Matches", cat: "football", icon: "TSN1", type: "native", mpd: "https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/w0rehjjrwe/out/v1/69a2a7041395406b970598f61680e7cf/cenc.mpd", kid: "14eeabf30c14b7fbf3008c03099ce011", key: "17d2ac8dbc5429bd70af3433aa12158d" },
   { name: "TSN 4", desc: "Live Matches", cat: "football", icon: "TSN4", type: "native", mpd: "https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/ihys8nw4wv/out/v1/fde190f369484bc6b6117cc16cd82a9f/cenc.mpd", kid: "abc5b2883121012850ebda05b528c5ec", key: "e5250924f4b738905f7163a0134587a7" },
+  { name: "Fox Sports 1", desc: "US Sports & Soccer", cat: "football", icon: "FOX1", type: "native", mpd: "https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/enc/ajfoeddkbz/out/v1/b78800b9b2304879b15843f455836829/cenc.mpd", kid: "f6564ec2aee819046328a0e153be574d", key: "ff46a8a1031eb27ef22576a077c98ab7" },
   { name: "ITV 1", desc: "UK Free-to-Air", cat: "football", icon: "ITV", type: "native", mpd: "https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/0eiyyz8qzm/out/v1/dd17af8835fe4bd087d1a4e359b635d7/cenc.mpd", kid: "30089c52924f037b225b82c616fee2a5", key: "f55dc8b66ed4fc6753d6035ae7e17144" },
   { name: "FIFA TV", desc: "Official FIFA Stream", cat: "football", icon: "FIFA", type: "native", mpd: "https://qp-pldt-live-bpk-ucd-prod.akamaized.net/bpk-tv/fifa_ppv1/default/index.mpd", kid: "2c338a117d434ce4bbe3569231af90f1", key: "a9633d901ee8a3f4f58ac314b5c5f4fb" },
   { name: "FIFA Live", desc: "FIFA Match Server", cat: "football", icon: "FIFA2", type: "native", mpd: "https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/72sjo8hygl/out/v1/3079be34d72a4985852d299a02406a0c/cenc.mpd", kid: "d185684e2330de5bea436daa094a5e86", key: "014f0116154f5bf0050e03a6b0a23157" },
@@ -67,8 +67,8 @@ function createCard(c) {
   a.className = 'channel-card';
 
   if (c.type === 'native') {
-    // Pass the actual decrypted keys to our local player
-    a.href = `kptv-player.html?name=${encodeURIComponent(c.name)}&mpd=${btoa(c.mpd)}&kid=${btoa(c.kid)}&key=${btoa(c.key)}`;
+    // Pass just the short ID to keep the URL clean
+    a.href = `kptv-player.html?id=${encodeURIComponent(c.icon)}`;
     a.target = '_self';
   } else {
     // Keep external links opening in a new tab to avoid frame-busting

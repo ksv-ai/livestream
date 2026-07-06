@@ -34,6 +34,12 @@
     .shaka-spinner-container {
         display: none !important;
     }
+
+    /* Hide the giant live stream time numbers */
+    .shaka-current-time, 
+    .shaka-time-container {
+        display: none !important;
+    }
   </style>
 </head>
 <body>
@@ -55,25 +61,27 @@
     </div>
   </div>
 
+  <script src="channels.js"></script>
   <script>
     (function() {
-      // 1. Extract params from URL
+      // 1. Extract short ID from URL
       const urlParams = new URLSearchParams(window.location.search);
-      const name = urlParams.get('name') || "Live Channel";
-      const mpdBase64 = urlParams.get('mpd');
-      const kidBase64 = urlParams.get('kid');
-      const keyBase64 = urlParams.get('key');
+      const chId = urlParams.get('id');
 
-      document.getElementById('cName').textContent = name;
+      // 2. Find channel in our database
+      const channel = typeof channelsData !== 'undefined' ? channelsData.find(c => c.icon === chId) : null;
 
-      if (!mpdBase64 || !kidBase64 || !keyBase64) {
-        document.querySelector('.player-container').innerHTML = '<h2 style="text-align:center;margin-top:50px;">Invalid or Missing DRM Keys</h2>';
+      if (!channel || !channel.mpd || !channel.kid || !channel.key) {
+        document.getElementById('cName').textContent = "Error Loading Channel";
+        document.querySelector('.player-container').innerHTML = '<h2 style="text-align:center;margin-top:50px;">Invalid Channel ID or Missing DRM Keys</h2>';
         return;
       }
 
-      const mpdUrl = atob(mpdBase64);
-      const kid = atob(kidBase64);
-      const key = atob(keyBase64);
+      document.getElementById('cName').textContent = channel.name;
+
+      const mpdUrl = channel.mpd;
+      const kid = channel.kid;
+      const key = channel.key;
 
       let player = null;
       let ui = null;
