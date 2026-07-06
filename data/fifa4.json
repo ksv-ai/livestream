@@ -21,35 +21,35 @@
     "telecast_links": [
         {
             "name": "ALL Link 2:FIFA World Cup",
-            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=FIFA"
+            "url": "https://yonotv-now.pages.dev/page.html?src=https://yonotv-now.pages.dev/LINK2?id=FIFA"
         },
         {
             "name": "HD Link 2:FIFA World Cup",
-            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=FIFA2"
+            "url": "https://yonotv-now.pages.dev/page.html?src=https://yonotv-now.pages.dev/LINK2?id=FIFA2"
         },
         {
             "name": "HD Link 3:FIFA World Cup",
-            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=FIFA3"
+            "url": "https://yonotv-now.pages.dev/page.html?src=https://yonotv-now.pages.dev/LINK2?id=FIFA3"
         },
         {
             "name": "HD Link 4:FIFA World Cup",
-            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=FIFA4"
+            "url": "https://yonotv-now.pages.dev/page.html?src=https://yonotv-now.pages.dev/LINK2?id=FIFA4"
         },
         {
             "name": "IOS Link 6:FIFA World Cup",
-            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=FIFA5"
+            "url": "https://yonotv-now.pages.dev/page.html?src=https://yonotv-now.pages.dev/LINK2?id=FIFA5"
         },
         {
             "name": "PC Link 7:FIFA World Cup",
-            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=FIFA6"
+            "url": "https://yonotv-now.pages.dev/page.html?src=https://yonotv-now.pages.dev/LINK2?id=FIFA6"
         },
         {
             "name": "PC Link 8:FIFA World Cup",
-            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=FIFA7"
+            "url": "https://yonotv-now.pages.dev/page.html?src=https://yonotv-now.pages.dev/LINK2?id=FIFA7"
         },
         {
             "name": "PC Link 9:FIFA World Cup",
-            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=FIFA8"
+            "url": "https://yonotv-now.pages.dev/page.html?src=https://yonotv-now.pages.dev/LINK2?id=FIFA8"
         }
     ]
 }

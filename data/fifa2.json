@@ -21,47 +21,47 @@
     "telecast_links": [
         {
             "name": "ALL Link 2:Mexico vs England",
-            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=Mexico"
+            "url": "https://yonotv-now.pages.dev/page.html?src=https://yonotv-now.pages.dev/LINK2?id=Mexico"
         },
         {
             "name": "HD Link 2:Mexico vs England",
-            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=Mexico2"
+            "url": "https://yonotv-now.pages.dev/page.html?src=https://yonotv-now.pages.dev/LINK2?id=Mexico2"
         },
         {
             "name": "HD Link 3:Mexico vs England",
-            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=Mexico3"
+            "url": "https://yonotv-now.pages.dev/page.html?src=https://yonotv-now.pages.dev/LINK2?id=Mexico3"
         },
         {
             "name": "HD Link 4:Mexico vs England",
-            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=Mexico4"
+            "url": "https://yonotv-now.pages.dev/page.html?src=https://yonotv-now.pages.dev/LINK2?id=Mexico4"
         },
         {
             "name": "HD 6:Mexico vs England",
-            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=Mexico5"
+            "url": "https://yonotv-now.pages.dev/page.html?src=https://yonotv-now.pages.dev/LINK2?id=Mexico5"
         },
         {
             "name": "Link 8:Mexico vs England",
-            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=Mexico6"
+            "url": "https://yonotv-now.pages.dev/page.html?src=https://yonotv-now.pages.dev/LINK2?id=Mexico6"
         },
         {
             "name": "Link 9:Mexico vs England",
-            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=Mexico7"
+            "url": "https://yonotv-now.pages.dev/page.html?src=https://yonotv-now.pages.dev/LINK2?id=Mexico7"
         },
         {
             "name": "Link 10:Mexico vs England",
-            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=Mexico8"
+            "url": "https://yonotv-now.pages.dev/page.html?src=https://yonotv-now.pages.dev/LINK2?id=Mexico8"
         },
         {
             "name": "Link 12:Mexico vs England",
-            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=Mexico9"
+            "url": "https://yonotv-now.pages.dev/page.html?src=https://yonotv-now.pages.dev/LINK2?id=Mexico9"
         },
         {
             "name": "Link 13:Mexico vs England",
-            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=Mexico10"
+            "url": "https://yonotv-now.pages.dev/page.html?src=https://yonotv-now.pages.dev/LINK2?id=Mexico10"
         },
         {
             "name": "Link 14:Mexico vs England",
-            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=Mexico11"
+            "url": "https://yonotv-now.pages.dev/page.html?src=https://yonotv-now.pages.dev/LINK2?id=Mexico11"
         }
     ]
 }

@@ -21,47 +21,47 @@
     "telecast_links": [
         {
             "name": "ALL Link 2:Colombia vs Ghana",
-            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=Colombia"
+            "url": "https://yonotv-now.pages.dev/page.html?src=https://yonotv-now.pages.dev/LINK2?id=Colombia"
         },
         {
             "name": "HD Link 1:Colombia vs Ghana",
-            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=Colombia2"
+            "url": "https://yonotv-now.pages.dev/page.html?src=https://yonotv-now.pages.dev/LINK2?id=Colombia2"
         },
         {
             "name": "HD Link 3:Colombia vs Ghana",
-            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=Colombia3"
+            "url": "https://yonotv-now.pages.dev/page.html?src=https://yonotv-now.pages.dev/LINK2?id=Colombia3"
         },
         {
             "name": "HD Link 4:Colombia vs Ghana",
-            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=Colombia4"
+            "url": "https://yonotv-now.pages.dev/page.html?src=https://yonotv-now.pages.dev/LINK2?id=Colombia4"
         },
         {
             "name": "Full HD 6:Colombia vs Ghana",
-            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=Colombia5"
+            "url": "https://yonotv-now.pages.dev/page.html?src=https://yonotv-now.pages.dev/LINK2?id=Colombia5"
         },
         {
             "name": "Link 8:Colombia vs Ghana",
-            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=Colombia6"
+            "url": "https://yonotv-now.pages.dev/page.html?src=https://yonotv-now.pages.dev/LINK2?id=Colombia6"
         },
         {
             "name": "Link 9:Colombia vs Ghana",
-            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=Colombia7"
+            "url": "https://yonotv-now.pages.dev/page.html?src=https://yonotv-now.pages.dev/LINK2?id=Colombia7"
         },
         {
             "name": "Link 10:Colombia vs Ghana",
-            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=Colombia8"
+            "url": "https://yonotv-now.pages.dev/page.html?src=https://yonotv-now.pages.dev/LINK2?id=Colombia8"
         },
         {
             "name": "Link 12:Colombia vs Ghana",
-            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=Colombia9"
+            "url": "https://yonotv-now.pages.dev/page.html?src=https://yonotv-now.pages.dev/LINK2?id=Colombia9"
         },
         {
             "name": "Link 13:Colombia vs Ghana",
-            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=Colombia10"
+            "url": "https://yonotv-now.pages.dev/page.html?src=https://yonotv-now.pages.dev/LINK2?id=Colombia10"
         },
         {
             "name": "Link 14:Colombia vs Ghana",
-            "url": "player.html#src=https://yonotv-now.pages.dev/LINK2?id=Colombia11"
+            "url": "https://yonotv-now.pages.dev/page.html?src=https://yonotv-now.pages.dev/LINK2?id=Colombia11"
         }
     ]
 }

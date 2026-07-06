@@ -224,11 +224,12 @@
     <div class="footer-bottom">
       <div style="font-family:var(--font-heading);font-size:24px;font-weight:700;color:var(--text-main);margin-bottom:10px">KP TV Sports</div>
       <span>© <span id="year"></span> KP TV Sports — All rights reserved.</span>
-      <span>Live data fetched securely from local database</span>
+      <span>Live data loaded locally</span>
     </div>
   </div>
 </footer>
 
+<script src="data.js"></script>
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -238,7 +239,6 @@ function getParam(name) {
 }
 
 const matchId = getParam('id') || 'fifa2';
-const JSON_URL = `data/${matchId}.json`;
 
 // ===== Flag helper =====
 function getFlag(name) {
@@ -351,9 +351,8 @@ function updatePage(data) {
 
 async function loadMatchData(silent = false) {
   try {
-    const res = await fetch(JSON_URL + '?t=' + Date.now());
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    const data = await res.json();
+    const data = window.KP_DATA ? window.KP_DATA[matchId] : null;
+    if (!data) throw new Error('Data not found for ' + matchId);
     updatePage(data);
     if (!silent) loadOtherMatches();
   } catch (err) {
@@ -368,13 +367,10 @@ const OTHER_IDS = ['fifa1','fifa2','fifa3','fifa4','fifa5','fifa6','fifa7','fifa
 async function loadOtherMatches() {
   const sidebarEl = document.getElementById('sidebarMatches');
   const items = [];
-  const results = await Promise.allSettled(
-    OTHER_IDS.slice(0,5).map(id => fetch(`data/${id}.json`).then(r => r.json()).then(d => ({id, d})))
-  );
-
-  for (const r of results) {
-    if (r.status !== 'fulfilled' || !r.value.d) continue;
-    const {id, d} = r.value;
+  
+  for (const id of OTHER_IDS.slice(0, 5)) {
+    const d = window.KP_DATA ? window.KP_DATA[id] : null;
+    if (!d) continue;
     const team1 = (d.team1 || {}).name || 'TBD';
     const team2 = (d.team2 || {}).name || 'TBD';
     const flag1 = getFlag(team1);
