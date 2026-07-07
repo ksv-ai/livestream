@@ -239,7 +239,18 @@
             document.addEventListener('touchstart', unlockSound);
 
           }).catch(err => {
-            console.error('Player load error', err);
+            console.warn('Native MPD failed, trying HLS fallback...', err);
+            if (channel.fallbackUrl && channel.fallbackUrl.endsWith('.m3u8')) {
+              player.load(channel.fallbackUrl).then(() => {
+                console.log('Stream loaded via HLS fallback URL');
+                video.muted = true;
+                video.play().catch(e => console.log('Autoplay blocked'));
+              }).catch(fallbackErr => {
+                console.error('Fallback player load error', fallbackErr);
+              });
+            } else {
+              console.error('Player load error', err);
+            }
           });
 
           // Setup UI

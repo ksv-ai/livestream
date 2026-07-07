@@ -158,6 +158,18 @@
         
         video.play().catch(e => console.log('Autoplay blocked', e));
       } catch (err) {
+        console.warn('MPD load failed, trying fallbackUrl...', err);
+        if (channel.fallbackUrl && channel.fallbackUrl.endsWith('.m3u8')) {
+          try {
+            await player.load(channel.fallbackUrl);
+            uis[slotId] = new shaka.ui.Overlay(player, container, video);
+            video.play().catch(e => console.log('Autoplay blocked', e));
+            return; // Success with fallback
+          } catch (fallbackErr) {
+            console.error('Fallback also failed', fallbackErr);
+          }
+        }
+        
         console.error('Error loading channel in slot', slotId, err);
         emptyState.innerHTML = "Error loading stream. Please refresh.";
         emptyState.style.display = 'flex';
