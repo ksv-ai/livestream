@@ -141,9 +141,9 @@
       // 2. Find channel in our database
       const channel = typeof channelsData !== 'undefined' ? channelsData.find(c => c.icon === chId) : null;
 
-      if (!channel || !channel.mpd) {
+      if (!channel || !channel.mpd || !channel.kid || !channel.key) {
         document.getElementById('cName').textContent = "Error Loading Channel";
-        document.querySelector('.player-container').innerHTML = '<h2 style="text-align:center;margin-top:50px;">Invalid Channel ID or Missing Stream</h2>';
+        document.querySelector('.player-container').innerHTML = '<h2 style="text-align:center;margin-top:50px;">Invalid Channel ID or Missing DRM Keys</h2>';
         return;
       }
 
@@ -196,19 +196,15 @@
         shaka.Player.probeSupport().then(() => {
           player = new shaka.Player(video);
 
-          // Inject our Streaming configurations!
+          // Inject our extracted DRM keys and Streaming configurations!
           const playerConfig = {
+            drm: { clearKeys: { [kid]: key } },
             streaming: {
               bufferingGoal: 60, // Buffer 60 seconds to prevent pausing
               rebufferingGoal: 2, // Only require 2s of buffer before resuming
               bufferBehind: 30, // Keep 30 seconds behind
             }
           };
-          
-          if (kid && key) {
-            playerConfig.drm = { clearKeys: { [kid]: key } };
-          }
-          
           player.configure(playerConfig);
 
           // Attempt to start with sound

@@ -141,11 +141,9 @@
       players[slotId] = player;
       
       const playerConfig = {
+        drm: { clearKeys: { [channel.kid]: channel.key } },
         streaming: { bufferingGoal: 30 }
       };
-      if (channel.kid && channel.key) {
-        playerConfig.drm = { clearKeys: { [channel.kid]: channel.key } };
-      }
       player.configure(playerConfig);
       
       // Force mute initially to prevent audio chaos when multiple streams load
